@@ -14,18 +14,9 @@ def setup():
 
 def handler(event):
     input_text = event["input"]["text"]
-    
-    # Simulación: se supone que el modelo genera este archivo
-    audio_path = "salida.wav"  # Asegurate de que exista este archivo para la prueba
-
-    with open(audio_path, "rb") as f:
-        audio_bytes = f.read()
-
-    # Codificar en base64
-    encoded_audio = base64.b64encode(audio_bytes).decode("utf-8")
-
     return {
-        "audio_base64": encoded_audio
+        "message": f"Texto recibido: {input_text}"
     }
+
 
 runpod.serverless.start({"handler": handler, "setup": setup})
